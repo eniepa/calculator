@@ -14,6 +14,9 @@ namespace calculator
     public partial class Calculator : Form
     {
         char decimalSeparator;
+        double numOne = 0;
+        double numTwo = 0;
+        string operation = null;
 
         public Calculator()
         {
@@ -96,5 +99,44 @@ namespace calculator
         {
 
         }
+
+        private void Operation_Click(object sender, EventArgs e)
+        {
+            operation = ((Button)sender).Text;
+            numOne = Convert.ToDouble(Display.Text);
+            Display.Text = string.Empty;
+
+        }
+
+        private void Result_Click(object sender, EventArgs e)
+        {
+            double result = 0;
+            numTwo = Convert.ToDouble(Display.Text);
+            if (operation == "+")
+            {
+                result = numOne + numTwo;
+            }
+            else if (operation == "-")
+            {
+                result = numOne - numTwo;
+            }
+            else if (operation == "*")
+            {
+                result = numOne * numTwo;
+            }
+            else if (operation == "/")
+            {
+                result = numOne / numTwo;
+            }
+
+            Display.Text = result.ToString();
+        }
+
+        private void buttonSubstract_Click(object sender, EventArgs e)
+        {
+            numOne = Convert.ToDouble(Display.Text);
+            Display.Text = string.Empty;
+        }
     }
+    
 }
