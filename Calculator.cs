@@ -16,7 +16,22 @@ namespace calculator
         char decimalSeparator;
         double numOne = 0;
         double numTwo = 0;
-        string operation = null;
+        string operation;
+        Random rand = new Random();
+
+        int red = 0;
+        int green = 0;
+        int blue = 0;
+
+        bool operationInserted = false;
+        string firstOperation;
+        string secondOperation;
+        string expression;
+        int lengthOfNumOne = 0;
+        bool scifiMode = false;
+        const int widthSmall = 460;
+        const int widthLarge = 800;
+      
 
         public Calculator()
         {
@@ -26,11 +41,16 @@ namespace calculator
 
         private void InitializeCalculator()
         {
+           
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            backColor.Enabled = true;
             decimalSeparator = Convert.ToChar(Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator);
-            this.BackColor = Color.DarkGray;
             Display.Text = "0";
             Display.TabStop = false;
-
+            this.Width = widthSmall;
+            
             string buttonName = null;
             Button button = null;
             for (int i = 0; i < 10; i++)
@@ -38,6 +58,7 @@ namespace calculator
                 buttonName = "button" + i;
                 button = (Button)this.Controls[buttonName];
                 button.Text = i.ToString();
+                // buttn.BackColor or Font = new Font ("Roboto", 22f)
             }
         }
 
@@ -75,13 +96,18 @@ namespace calculator
             string s = Display.Text;
             if (s.Length > 1)
             {
-                s = s.Substring(0, s.Length - 1);
+                if ((s.Contains("-")) && (s.Length == 2) || s.Substring(s.Length - 1, 1) == decimalSeparator.ToString())
+                {
+                    s = "0";
+                    Display.Text = s;
+                    return;
+                }
+                else
+                {
+                    s = "0";
+                }
+                Display.Text = s;
             }
-            else
-            {
-                s = "0";
-            }
-            Display.Text = s;
         }
 
         private void buttonSign_Click(object sender, EventArgs e)
@@ -90,7 +116,7 @@ namespace calculator
             {
                 double number = Convert.ToDouble(Display.Text);
                 number *= -1;
-                Display.Text = Convert.ToString(number);
+                Display.Text = number.ToString();
             }
             catch { }
         }
@@ -102,10 +128,17 @@ namespace calculator
 
         private void Operation_Click(object sender, EventArgs e)
         {
-            operation = ((Button)sender).Text;
+            Button button = (Button)sender;
             numOne = Convert.ToDouble(Display.Text);
-            Display.Text = string.Empty;
 
+            if (button.Text == "Sqrt")
+            {
+                Display.Text = Math.Sqrt(numOne).ToString();
+                return;
+            }
+
+            Display.Text = string.Empty;
+            operation = button.Text;
         }
 
         private void Result_Click(object sender, EventArgs e)
@@ -128,14 +161,43 @@ namespace calculator
             {
                 result = numOne / numTwo;
             }
+            else if (operation == "^")
+            {
+                numOne = Math.Pow(numOne, numTwo);
+            }
 
             Display.Text = result.ToString();
         }
 
         private void buttonSubstract_Click(object sender, EventArgs e)
         {
-            numOne = Convert.ToDouble(Display.Text);
-            Display.Text = string.Empty;
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            Display.Text = "0";
+        }
+
+        private void backColor_Tick(object sender, EventArgs e)
+        {
+            red = rand.Next(0, 256);
+            green = rand.Next(0, 256);
+            blue = rand.Next(0, 256);
+            this.BackColor = Color.FromArgb(red, green, blue);
+            
+        }
+
+        private void buttonSciFi_Click(object sender, EventArgs e)
+        {
+            if (scifiMode)
+            {
+                this.Width = widthSmall;
+            }
+            else
+            {
+                this.Width = widthLarge;
+            }
+            scifiMode = !scifiMode;
         }
     }
     

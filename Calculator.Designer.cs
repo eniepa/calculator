@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calculator));
             this.Display = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -47,6 +49,19 @@
             this.buttonDivide = new System.Windows.Forms.Button();
             this.buttonSubstract = new System.Windows.Forms.Button();
             this.buttonResult = new System.Windows.Forms.Button();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.backColor = new System.Windows.Forms.Timer(this.components);
+            this.buttonPower = new System.Windows.Forms.Button();
+            this.buttonSqrt = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonSciFi = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Display
@@ -248,19 +263,160 @@
             // buttonResult
             // 
             this.buttonResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.buttonResult.Location = new System.Drawing.Point(12, 412);
+            this.buttonResult.Location = new System.Drawing.Point(93, 412);
             this.buttonResult.Name = "buttonResult";
-            this.buttonResult.Size = new System.Drawing.Size(237, 75);
+            this.buttonResult.Size = new System.Drawing.Size(156, 53);
             this.buttonResult.TabIndex = 18;
             this.buttonResult.Text = "=";
             this.buttonResult.UseVisualStyleBackColor = true;
             this.buttonResult.Click += new System.EventHandler(this.Result_Click);
             // 
+            // buttonClear
+            // 
+            this.buttonClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.buttonClear.Location = new System.Drawing.Point(255, 412);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(86, 53);
+            this.buttonClear.TabIndex = 19;
+            this.buttonClear.Text = "clear";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // backColor
+            // 
+            this.backColor.Interval = 2000;
+            this.backColor.Tick += new System.EventHandler(this.backColor_Tick);
+            // 
+            // buttonPower
+            // 
+            this.buttonPower.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.buttonPower.Location = new System.Drawing.Point(394, 101);
+            this.buttonPower.Name = "buttonPower";
+            this.buttonPower.Size = new System.Drawing.Size(75, 75);
+            this.buttonPower.TabIndex = 20;
+            this.buttonPower.Text = "^";
+            this.buttonPower.UseVisualStyleBackColor = true;
+            this.buttonPower.Click += new System.EventHandler(this.Operation_Click);
+            // 
+            // buttonSqrt
+            // 
+            this.buttonSqrt.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.buttonSqrt.Location = new System.Drawing.Point(475, 101);
+            this.buttonSqrt.Name = "buttonSqrt";
+            this.buttonSqrt.Size = new System.Drawing.Size(75, 75);
+            this.buttonSqrt.TabIndex = 21;
+            this.buttonSqrt.Text = "sqrt";
+            this.buttonSqrt.UseVisualStyleBackColor = true;
+            this.buttonSqrt.Click += new System.EventHandler(this.Operation_Click);
+            // 
+            // button11
+            // 
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.button11.Location = new System.Drawing.Point(556, 101);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 75);
+            this.button11.TabIndex = 22;
+            this.button11.Text = "^";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.button12.Location = new System.Drawing.Point(556, 182);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(75, 75);
+            this.button12.TabIndex = 25;
+            this.button12.Text = "^";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // button13
+            // 
+            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.button13.Location = new System.Drawing.Point(475, 182);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(75, 75);
+            this.button13.TabIndex = 24;
+            this.button13.Text = "^";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.button14.Location = new System.Drawing.Point(394, 182);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(75, 75);
+            this.button14.TabIndex = 23;
+            this.button14.Text = "^";
+            this.button14.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.button15.Location = new System.Drawing.Point(556, 263);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(75, 75);
+            this.button15.TabIndex = 28;
+            this.button15.Text = "^";
+            this.button15.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.button16.Location = new System.Drawing.Point(475, 263);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(75, 75);
+            this.button16.TabIndex = 27;
+            this.button16.Text = "^";
+            this.button16.UseVisualStyleBackColor = true;
+            // 
+            // button17
+            // 
+            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.button17.Location = new System.Drawing.Point(394, 263);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(75, 75);
+            this.button17.TabIndex = 26;
+            this.button17.Text = "^";
+            this.button17.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label1.Location = new System.Drawing.Point(456, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(126, 31);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "scienticic";
+            // 
+            // buttonSciFi
+            // 
+            this.buttonSciFi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.buttonSciFi.Location = new System.Drawing.Point(12, 412);
+            this.buttonSciFi.Name = "buttonSciFi";
+            this.buttonSciFi.Size = new System.Drawing.Size(75, 53);
+            this.buttonSciFi.TabIndex = 30;
+            this.buttonSciFi.Text = "sci-fi";
+            this.buttonSciFi.UseVisualStyleBackColor = true;
+            this.buttonSciFi.Click += new System.EventHandler(this.buttonSciFi_Click);
+            // 
             // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 462);
+            this.ClientSize = new System.Drawing.Size(628, 485);
+            this.Controls.Add(this.buttonSciFi);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button15);
+            this.Controls.Add(this.button16);
+            this.Controls.Add(this.button17);
+            this.Controls.Add(this.button12);
+            this.Controls.Add(this.button13);
+            this.Controls.Add(this.button14);
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.buttonSqrt);
+            this.Controls.Add(this.buttonPower);
+            this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonResult);
             this.Controls.Add(this.buttonSubstract);
             this.Controls.Add(this.buttonDivide);
@@ -280,8 +436,9 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Display);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Calculator";
-            this.Text = "Form1";
+            this.Text = "simple calculator";
             this.Load += new System.EventHandler(this.Calculator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -309,6 +466,19 @@
         private System.Windows.Forms.Button buttonDivide;
         private System.Windows.Forms.Button buttonSubstract;
         private System.Windows.Forms.Button buttonResult;
+        private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.Timer backColor;
+        private System.Windows.Forms.Button buttonPower;
+        private System.Windows.Forms.Button buttonSqrt;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonSciFi;
     }
 }
 
